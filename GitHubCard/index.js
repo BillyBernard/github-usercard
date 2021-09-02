@@ -54,7 +54,7 @@ axios.get(url)
   .then(resp => {
     console.log(resp.data);
     const card = gitCardMaker(resp.data);
-    entryPoint.prepend(card);
+    entryPoint.appendChild(card);
   })
   .catch(error => {
     const errorText = document.createElement('p');
@@ -120,10 +120,12 @@ function gitCardMaker ({ avatar_url, name, login, location, html_url, followers,
 
   info.appendChild(userLocation);
   userLocation.textContent = `Location: ${location}`;
+
   info.appendChild(profile);
-  profile.textContent = `Profile: ${userLink}`;
+  profile.textContent = `Profile:`;
+
   profile.appendChild(userLink);
-  userLink.textContent = `${html_url}`
+  userLink.textContent = `${html_url}`;
   userLink.href = html_url;
 
   info.appendChild(followerCount);
